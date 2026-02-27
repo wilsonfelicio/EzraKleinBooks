@@ -156,19 +156,86 @@
   .footer { text-align: center; padding: 40px 20px; color: #aaa; font-size: 0.8rem; border-top: 1px solid #e0ddd5; }
   .footer a { color: #2c3e6b; }
 
-  @media (max-width: 700px) {
-    .header h1 { font-size: 1.6rem; }
-    .stats-bar { gap: 16px; }
-    .stat .num { font-size: 1.4rem; }
-    .bar-label { flex: 0 0 140px; font-size: 0.75rem; }
-    .bar-recommenders { margin-left: 152px; }
-    .tabs { gap: 0; }
-    .tab { padding: 10px 12px; font-size: 0.78rem; }
-    .books-table { font-size: 0.78rem; }
-    .books-table th, .books-table td { padding: 6px 8px; }
-    .filter-row { flex-direction: column; align-items: flex-start; }
-    .scatter-container { height: 350px; }
+  /* Tablet */
+  @media (max-width: 900px) {
     .top-grid { grid-template-columns: 1fr; }
+    .guests-grid { grid-template-columns: 1fr; }
+    .bar-label { flex: 0 0 200px; }
+    .bar-recommenders { margin-left: 212px; }
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .header { padding: 48px 16px 32px; }
+    .header h1 { font-size: 1.5rem; }
+    .header .subtitle { font-size: 1.1rem; }
+    .header p { font-size: 0.88rem; }
+
+    .stats-bar { gap: 12px; padding: 20px 16px; display: grid; grid-template-columns: repeat(3, 1fr); }
+    .stat .num { font-size: 1.3rem; }
+    .stat .label { font-size: 0.65rem; }
+
+    .tabs { overflow-x: auto; justify-content: flex-start; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0 8px; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { padding: 12px 14px; font-size: 0.78rem; white-space: nowrap; flex-shrink: 0; }
+
+    .content { padding: 24px 12px 40px; }
+
+    .chart-title { font-size: 1.1rem; }
+
+    /* Bar charts: stack label above bar */
+    .bar-row { flex-direction: column; align-items: flex-start; gap: 4px; padding: 8px 0; }
+    .bar-label { flex: none; width: 100%; text-align: left; font-size: 0.82rem; }
+    .bar-label .author { display: inline; }
+    .bar-label .author::before { content: ' — '; }
+    .bar-container { width: 100%; }
+    .bar-recommenders { margin-left: 0; padding-left: 0; margin-top: 2px; }
+
+    /* Donut */
+    .donut-container { flex-direction: column; gap: 16px; }
+    .donut-svg { width: 160px; height: 160px; }
+
+    /* Genre overview */
+    .genre-overview { grid-template-columns: 1fr; gap: 10px; }
+    .genre-card { padding: 16px; display: flex; align-items: center; gap: 16px; text-align: left; }
+    .genre-card .big-num { font-size: 1.8rem; flex-shrink: 0; min-width: 48px; }
+    .genre-card .genre-label { margin-top: 0; }
+    .genre-card .genre-pct { font-size: 1rem; margin-top: 0; }
+    .genre-card .avg-rating { margin-top: 2px; }
+
+    /* Episode cards */
+    .episode-card { padding: 16px; margin-bottom: 12px; }
+    .episode-title { font-size: 1rem; }
+    .book-list li { font-size: 0.84rem; }
+
+    /* All books table — horizontal scroll */
+    .books-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 0.78rem; }
+    .books-table th, .books-table td { padding: 8px 10px; min-width: 80px; }
+    .books-table th:first-child, .books-table td:first-child { min-width: 160px; }
+
+    /* Top rated */
+    .top-grid { grid-template-columns: 1fr; gap: 10px; }
+    .top-card { padding: 16px; }
+
+    /* Guests */
+    .guests-grid { grid-template-columns: 1fr; gap: 10px; }
+    .guest-card { padding: 14px; }
+
+    /* Scatter */
+    .scatter-container { height: 300px; border-radius: 4px; }
+    .scatter-legend { top: 8px; right: 8px; font-size: 0.68rem; gap: 8px; }
+
+    /* Filters */
+    .filter-row { flex-direction: column; align-items: stretch; gap: 10px; }
+    .search-box { max-width: 100%; }
+    .filter-select { width: 100%; }
+    .genre-pills { gap: 4px; }
+    .genre-pill { padding: 5px 10px; font-size: 0.75rem; }
+
+    /* Load more */
+    .load-more { width: 100%; padding: 14px; }
+
+    .footer { padding: 24px 16px; font-size: 0.75rem; }
   }
 </style>
 </head>
