@@ -5,164 +5,156 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ezra Klein Show — Book Recommendations</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e8e8e8; min-height: 100vh; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #faf9f6; color: #1a1a1a; min-height: 100vh; }
 
-  .header { text-align: center; padding: 60px 20px 40px; border-bottom: 1px solid #222; }
-  .header h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
-  .header h1 span { color: #6c9bff; }
-  .header .subtitle { font-size: 1.4rem; font-weight: 300; margin-bottom: 12px; }
-  .header p { color: #888; font-size: 1rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+  .header { text-align: center; padding: 80px 20px 48px; border-bottom: 1px solid #e0ddd5; }
+  .header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.6rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; color: #1a1a1a; }
+  .header h1 span { color: #2c3e6b; }
+  .header .subtitle { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; font-weight: 600; color: #444; margin-bottom: 12px; }
+  .header p { color: #666; font-size: 1rem; max-width: 600px; margin: 0 auto; line-height: 1.7; }
 
-  .stats-bar { display: flex; justify-content: center; gap: 40px; padding: 28px 20px; border-bottom: 1px solid #222; flex-wrap: wrap; }
+  .stats-bar { display: flex; justify-content: center; gap: 40px; padding: 28px 20px; border-bottom: 1px solid #e0ddd5; }
   .stat { text-align: center; }
-  .stat .num { font-size: 2rem; font-weight: 700; color: #6c9bff; }
-  .stat .num.fiction { color: #c084fc; }
-  .stat .num.nonfiction { color: #34d399; }
-  .stat .num.poetry { color: #fbbf24; }
-  .stat .label { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+  .stat .num { font-size: 2rem; font-weight: 700; color: #2c3e6b; }
+  .stat .label { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
 
-  .tabs { display: flex; justify-content: center; gap: 4px; padding: 16px 20px; border-bottom: 1px solid #222; position: sticky; top: 0; background: #0f0f0f; z-index: 10; flex-wrap: wrap; }
-  .tab { padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 500; background: transparent; color: #888; border: 1px solid transparent; transition: all 0.2s; }
-  .tab:hover { color: #ccc; background: #1a1a1a; }
-  .tab.active { background: #1a1a2e; color: #6c9bff; border-color: #2a2a4e; }
+  .tabs { display: flex; justify-content: center; gap: 0; padding: 0 20px; border-bottom: 1px solid #e0ddd5; position: sticky; top: 0; background: #faf9f6; z-index: 10; flex-wrap: wrap; }
+  .tab { padding: 14px 20px; cursor: pointer; font-size: 0.85rem; font-weight: 500; background: transparent; color: #888; border: none; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .tab:hover { color: #1a1a1a; }
+  .tab.active { color: #2c3e6b; border-bottom-color: #2c3e6b; }
 
-  .content { max-width: 1200px; margin: 0 auto; padding: 30px 20px 60px; }
+  .content { max-width: 1200px; margin: 0 auto; padding: 40px 20px 60px; }
   .section { display: none; }
   .section.active { display: block; }
 
-  .chart-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; color: #ccc; }
-  .chart-subtitle { font-size: 0.85rem; color: #555; margin-bottom: 24px; }
+  .chart-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: #1a1a1a; }
+  .chart-subtitle { font-size: 0.85rem; color: #888; margin-bottom: 24px; }
 
   /* Genre badges */
-  .genre-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-  .genre-badge.fiction { background: #2a1a3e; color: #c084fc; }
-  .genre-badge.nonfiction { background: #0f2922; color: #34d399; }
-  .genre-badge.poetry { background: #2a2510; color: #fbbf24; }
-  .genre-badge.other { background: #1a1a1a; color: #888; }
+  .genre-badge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .genre-badge.fiction { background: #f3ebe6; color: #b56b4a; }
+  .genre-badge.nonfiction { background: #eaf0ea; color: #5a7a5a; }
+  .genre-badge.poetry { background: #f0eddf; color: #9a8445; }
+  .genre-badge.other { background: #f0eeeb; color: #888; }
 
   /* Bar chart */
   .bar-row { display: flex; align-items: center; margin-bottom: 10px; gap: 12px; cursor: pointer; padding: 4px 0; border-radius: 4px; transition: background 0.15s; }
-  .bar-row:hover { background: #161616; }
-  .bar-label { flex: 0 0 300px; text-align: right; font-size: 0.85rem; color: #bbb; overflow: hidden; text-overflow: ellipsis; }
-  .bar-label .author { color: #555; font-size: 0.76rem; display: block; }
+  .bar-row:hover { background: #f5f3ef; }
+  .bar-label { flex: 0 0 300px; text-align: right; font-size: 0.85rem; color: #1a1a1a; overflow: hidden; text-overflow: ellipsis; }
+  .bar-label .author { color: #888; font-size: 0.76rem; display: block; }
   .bar-container { flex: 1; display: flex; align-items: center; gap: 8px; }
-  .bar { height: 28px; border-radius: 4px; transition: width 0.6s ease; min-width: 28px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; }
-  .bar.fiction-bar { background: linear-gradient(90deg, #4a2a6e, #c084fc); }
-  .bar.nonfiction-bar { background: linear-gradient(90deg, #1a4a3a, #34d399); }
-  .bar.poetry-bar { background: linear-gradient(90deg, #4a3a10, #fbbf24); }
+  .bar { height: 28px; border-radius: 3px; transition: width 0.6s ease; min-width: 28px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; }
+  .bar.fiction-bar { background: #b56b4a; }
+  .bar.nonfiction-bar { background: #5a7a5a; }
+  .bar.poetry-bar { background: #9a8445; }
   .bar .count { font-size: 0.78rem; font-weight: 600; color: #fff; }
-  .gr-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem; color: #b8a060; background: #1e1a10; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
-  .bar-recommenders { display: none; font-size: 0.78rem; color: #666; margin: -4px 0 8px 312px; padding-left: 12px; }
+  .gr-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem; color: #9a8445; background: #f0eddf; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
+  .bar-recommenders { display: none; font-size: 0.78rem; color: #888; margin: -4px 0 8px 312px; padding-left: 12px; }
   .bar-row.expanded + .bar-recommenders { display: block; }
 
   /* Genre overview */
   .genre-overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; }
-  .genre-card { background: #161616; border: 1px solid #222; border-radius: 12px; padding: 24px; text-align: center; }
-  .genre-card .big-num { font-size: 2.4rem; font-weight: 700; }
-  .genre-card .big-num.fiction { color: #c084fc; }
-  .genre-card .big-num.nonfiction { color: #34d399; }
-  .genre-card .big-num.poetry { color: #fbbf24; }
+  .genre-card { background: #fff; border: 1px solid #e0ddd5; border-radius: 6px; padding: 24px; text-align: center; }
+  .genre-card .big-num { font-family: 'Playfair Display', Georgia, serif; font-size: 2.4rem; font-weight: 700; }
+  .genre-card .big-num.fiction { color: #b56b4a; }
+  .genre-card .big-num.nonfiction { color: #5a7a5a; }
+  .genre-card .big-num.poetry { color: #9a8445; }
   .genre-card .genre-label { font-size: 0.85rem; color: #888; margin-top: 4px; }
-  .genre-card .genre-pct { font-size: 1.2rem; font-weight: 600; color: #555; margin-top: 2px; }
-  .genre-card .avg-rating { font-size: 0.8rem; color: #b8a060; margin-top: 8px; }
+  .genre-card .genre-pct { font-size: 1.2rem; font-weight: 600; color: #666; margin-top: 2px; }
+  .genre-card .avg-rating { font-size: 0.8rem; color: #9a8445; margin-top: 8px; }
 
   .donut-container { display: flex; justify-content: center; align-items: center; gap: 40px; margin: 24px 0 40px; flex-wrap: wrap; }
   .donut-svg { width: 200px; height: 200px; }
-  .donut-legend { font-size: 0.9rem; }
+  .donut-legend { font-size: 0.9rem; color: #1a1a1a; }
   .donut-legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
   .donut-legend-color { width: 14px; height: 14px; border-radius: 3px; }
 
   /* Episode list */
-  .episode-card { background: #161616; border: 1px solid #222; border-radius: 12px; padding: 24px; margin-bottom: 16px; transition: border-color 0.2s; }
-  .episode-card:hover { border-color: #333; }
-  .episode-date { font-size: 0.75rem; color: #555; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-  .episode-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
-  .episode-guests { font-size: 0.88rem; color: #6c9bff; margin-bottom: 16px; }
+  .episode-card { background: #fff; border: 1px solid #e0ddd5; border-radius: 6px; padding: 24px; margin-bottom: 16px; }
+  .episode-date { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .episode-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; color: #1a1a1a; }
+  .episode-guests { font-size: 0.88rem; color: #2c3e6b; margin-bottom: 16px; }
   .book-list { list-style: none; }
-  .book-list li { padding: 8px 0; border-top: 1px solid #1e1e1e; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .book-list li { padding: 8px 0; border-top: 1px solid #e0ddd5; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .book-list li:first-child { border-top: none; }
-  .book-num { color: #444; font-size: 0.75rem; font-weight: 600; flex-shrink: 0; width: 18px; }
-  .book-title-text { font-weight: 500; font-size: 0.92rem; }
-  .book-author-text { color: #666; font-size: 0.84rem; }
-  .book-rating { color: #b8a060; font-size: 0.76rem; }
+  .book-num { color: #bbb; font-size: 0.75rem; font-weight: 600; flex-shrink: 0; width: 18px; }
+  .book-title-text { font-weight: 500; font-size: 0.92rem; color: #1a1a1a; }
+  .book-author-text { color: #888; font-size: 0.84rem; }
+  .book-rating { color: #9a8445; font-size: 0.76rem; }
 
   /* All books table */
   .books-table { width: 100%; border-collapse: collapse; }
-  .books-table th { text-align: left; padding: 12px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid #222; cursor: pointer; user-select: none; white-space: nowrap; }
-  .books-table th:hover { color: #6c9bff; }
-  .books-table th.sorted { color: #6c9bff; }
-  .books-table td { padding: 10px 12px; font-size: 0.85rem; border-bottom: 1px solid #1a1a1a; vertical-align: top; }
-  .books-table tr:hover td { background: #161616; }
+  .books-table th { text-align: left; padding: 12px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; border-bottom: 2px solid #e0ddd5; cursor: pointer; user-select: none; white-space: nowrap; }
+  .books-table th:hover { color: #2c3e6b; }
+  .books-table th.sorted { color: #2c3e6b; }
+  .books-table td { padding: 10px 12px; font-size: 0.85rem; border-bottom: 1px solid #f0eeeb; vertical-align: top; }
+  .books-table tr:hover td { background: #f5f3ef; }
 
-  .rec-badge { display: inline-block; background: #1a1a2e; color: #6c9bff; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; }
-  .rec-badge.hot { background: #2e1a1a; color: #ff6c6c; }
-  .rating-num { color: #b8a060; font-size: 0.85rem; font-weight: 600; }
-  .rating-count { color: #555; font-size: 0.7rem; display: block; }
+  .rec-badge { display: inline-block; background: #e8ecf4; color: #2c3e6b; padding: 2px 8px; border-radius: 3px; font-size: 0.78rem; font-weight: 600; }
+  .rec-badge.hot { background: #f3ebe6; color: #b56b4a; }
+  .rating-num { color: #9a8445; font-size: 0.85rem; font-weight: 600; }
+  .rating-count { color: #888; font-size: 0.7rem; display: block; }
 
-  .search-box { width: 100%; max-width: 400px; padding: 12px 16px; border-radius: 8px; border: 1px solid #333; background: #161616; color: #e8e8e8; font-size: 0.92rem; outline: none; font-family: inherit; }
-  .search-box:focus { border-color: #6c9bff; }
-  .search-box::placeholder { color: #555; }
+  .search-box { width: 100%; max-width: 400px; padding: 12px 16px; border-radius: 6px; border: 1px solid #e0ddd5; background: #fff; color: #1a1a1a; font-size: 0.92rem; outline: none; font-family: inherit; }
+  .search-box:focus { border-color: #2c3e6b; }
+  .search-box::placeholder { color: #aaa; }
 
   .filter-row { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
-  .filter-select { padding: 8px 14px; border-radius: 6px; border: 1px solid #333; background: #161616; color: #e8e8e8; font-size: 0.85rem; font-family: inherit; cursor: pointer; }
+  .filter-select { padding: 8px 14px; border-radius: 6px; border: 1px solid #e0ddd5; background: #fff; color: #1a1a1a; font-size: 0.85rem; font-family: inherit; cursor: pointer; }
 
   /* Genre pills filter */
   .genre-pills { display: flex; gap: 6px; flex-wrap: wrap; }
-  .genre-pill { padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 500; border: 1px solid #333; background: #161616; color: #888; transition: all 0.2s; }
-  .genre-pill:hover { border-color: #555; }
-  .genre-pill.active { border-color: #6c9bff; color: #6c9bff; background: #1a1a2e; }
-  .genre-pill.active.fiction { border-color: #c084fc; color: #c084fc; background: #1a102e; }
-  .genre-pill.active.nonfiction { border-color: #34d399; color: #34d399; background: #0f1f1a; }
-  .genre-pill.active.poetry { border-color: #fbbf24; color: #fbbf24; background: #1f1a0f; }
+  .genre-pill { padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 500; border: 1px solid #e0ddd5; background: #fff; color: #888; transition: all 0.2s; }
+  .genre-pill:hover { border-color: #bbb; }
+  .genre-pill.active { border-color: #2c3e6b; color: #2c3e6b; background: #e8ecf4; }
+  .genre-pill.active.fiction { border-color: #b56b4a; color: #b56b4a; background: #f3ebe6; }
+  .genre-pill.active.nonfiction { border-color: #5a7a5a; color: #5a7a5a; background: #eaf0ea; }
+  .genre-pill.active.poetry { border-color: #9a8445; color: #9a8445; background: #f0eddf; }
 
   .guests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
-  .guest-card { background: #161616; border: 1px solid #222; border-radius: 10px; padding: 18px; transition: all 0.2s; }
-  .guest-card:hover { border-color: #6c9bff; transform: translateY(-2px); }
-  .guest-name { font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
-  .guest-ep { font-size: 0.8rem; color: #555; margin-bottom: 8px; }
-  .guest-books { font-size: 0.82rem; color: #888; line-height: 1.6; }
+  .guest-card { background: #fff; border: 1px solid #e0ddd5; border-radius: 6px; padding: 18px; }
+  .guest-name { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 1rem; margin-bottom: 4px; color: #1a1a1a; }
+  .guest-ep { font-size: 0.8rem; color: #888; margin-bottom: 8px; }
+  .guest-books { font-size: 0.82rem; color: #666; line-height: 1.6; }
 
-  .load-more { display: block; margin: 20px auto; padding: 12px 32px; background: #1a1a2e; color: #6c9bff; border: 1px solid #2a2a4e; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-family: inherit; }
-  .load-more:hover { background: #222244; }
+  .load-more { display: block; margin: 20px auto; padding: 12px 32px; background: #fff; color: #2c3e6b; border: 1px solid #e0ddd5; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-family: inherit; }
+  .load-more:hover { background: #f5f3ef; }
 
   /* Scatter plot */
-  .scatter-container { position: relative; width: 100%; height: 500px; background: #141414; border: 1px solid #222; border-radius: 12px; margin: 20px 0; overflow: hidden; }
-  .scatter-dot { position: absolute; border-radius: 50%; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; z-index: 1; }
+  .scatter-container { position: relative; width: 100%; height: 500px; background: #fff; border: 1px solid #e0ddd5; border-radius: 6px; margin: 20px 0; overflow: hidden; }
+  .scatter-dot { position: absolute; border-radius: 50%; cursor: pointer; transition: transform 0.15s; z-index: 1; }
   .scatter-dot:hover { transform: scale(2); z-index: 5; }
-  .scatter-dot.fiction { background: #c084fc; }
-  .scatter-dot.fiction:hover { box-shadow: 0 0 12px #c084fc88; }
-  .scatter-dot.nonfiction { background: #34d399; }
-  .scatter-dot.nonfiction:hover { box-shadow: 0 0 12px #34d39988; }
-  .scatter-dot.poetry { background: #fbbf24; }
-  .scatter-dot.poetry:hover { box-shadow: 0 0 12px #fbbf2488; }
-  .scatter-axis-x, .scatter-axis-y { position: absolute; color: #444; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .scatter-dot.fiction { background: #b56b4a; }
+  .scatter-dot.nonfiction { background: #5a7a5a; }
+  .scatter-dot.poetry { background: #9a8445; }
+  .scatter-axis-x, .scatter-axis-y { position: absolute; color: #888; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; }
   .scatter-axis-x { bottom: 8px; left: 50%; transform: translateX(-50%); }
   .scatter-axis-y { top: 50%; left: 8px; transform: rotate(-90deg) translateX(-50%); transform-origin: left center; }
-  .scatter-tooltip { display: none; position: absolute; background: #222; border: 1px solid #444; border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; z-index: 10; pointer-events: none; max-width: 300px; line-height: 1.4; }
-  .scatter-labels { position: absolute; color: #555; font-size: 0.7rem; }
-  .scatter-legend { position: absolute; top: 12px; right: 16px; font-size: 0.78rem; display: flex; gap: 16px; }
+  .scatter-tooltip { display: none; position: absolute; background: #fff; border: 1px solid #e0ddd5; border-radius: 6px; padding: 10px 14px; font-size: 0.82rem; z-index: 10; pointer-events: none; max-width: 300px; line-height: 1.4; color: #1a1a1a; }
+  .scatter-labels { position: absolute; color: #aaa; font-size: 0.7rem; }
+  .scatter-legend { position: absolute; top: 12px; right: 16px; font-size: 0.78rem; display: flex; gap: 16px; color: #666; }
   .scatter-legend-item { display: flex; align-items: center; gap: 5px; }
   .scatter-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
 
   /* Top rated cards */
   .top-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 24px; }
-  .top-card { background: #161616; border: 1px solid #222; border-radius: 10px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; }
-  .top-rank { font-size: 1.6rem; font-weight: 700; color: #333; flex-shrink: 0; width: 32px; text-align: center; }
-  .top-rank.gold { color: #d4a843; }
-  .top-rank.silver { color: #888; }
-  .top-rank.bronze { color: #a0664d; }
+  .top-card { background: #fff; border: 1px solid #e0ddd5; border-radius: 6px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; }
+  .top-rank { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; font-weight: 700; color: #ccc; flex-shrink: 0; width: 32px; text-align: center; }
+  .top-rank.gold { color: #9a8445; }
+  .top-rank.silver { color: #999; }
+  .top-rank.bronze { color: #b56b4a; }
   .top-info { flex: 1; }
-  .top-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
-  .top-author { color: #666; font-size: 0.82rem; margin-bottom: 8px; }
+  .top-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; color: #1a1a1a; }
+  .top-author { color: #888; font-size: 0.82rem; margin-bottom: 8px; }
   .top-stats { display: flex; gap: 12px; font-size: 0.8rem; flex-wrap: wrap; }
-  .top-stats .rating { color: #d4a843; font-weight: 600; }
-  .top-stats .recs { color: #6c9bff; }
-  .top-stats .num-ratings { color: #555; }
+  .top-stats .rating { color: #9a8445; font-weight: 600; }
+  .top-stats .recs { color: #2c3e6b; }
+  .top-stats .num-ratings { color: #888; }
 
-  .footer { text-align: center; padding: 40px 20px; color: #333; font-size: 0.8rem; border-top: 1px solid #1a1a1a; }
-  .footer a { color: #6c9bff; }
+  .footer { text-align: center; padding: 40px 20px; color: #aaa; font-size: 0.8rem; border-top: 1px solid #e0ddd5; }
+  .footer a { color: #2c3e6b; }
 
   @media (max-width: 700px) {
     .header h1 { font-size: 1.6rem; }
@@ -170,8 +162,8 @@
     .stat .num { font-size: 1.4rem; }
     .bar-label { flex: 0 0 140px; font-size: 0.75rem; }
     .bar-recommenders { margin-left: 152px; }
-    .tabs { gap: 4px; }
-    .tab { padding: 8px 12px; font-size: 0.78rem; }
+    .tabs { gap: 0; }
+    .tab { padding: 10px 12px; font-size: 0.78rem; }
     .books-table { font-size: 0.78rem; }
     .books-table th, .books-table td { padding: 6px 8px; }
     .filter-row { flex-direction: column; align-items: flex-start; }
@@ -191,9 +183,9 @@
 <div class="stats-bar">
   <div class="stat"><div class="num" id="s-ep">0</div><div class="label">Episodes</div></div>
   <div class="stat"><div class="num" id="s-books">0</div><div class="label">Unique Books</div></div>
-  <div class="stat"><div class="num nonfiction" id="s-nf">0</div><div class="label">Nonfiction</div></div>
-  <div class="stat"><div class="num fiction" id="s-fic">0</div><div class="label">Fiction</div></div>
-  <div class="stat"><div class="num poetry" id="s-po">0</div><div class="label">Poetry</div></div>
+  <div class="stat"><div class="num" id="s-nf">0</div><div class="label">Nonfiction</div></div>
+  <div class="stat"><div class="num" id="s-fic">0</div><div class="label">Fiction</div></div>
+  <div class="stat"><div class="num" id="s-po">0</div><div class="label">Poetry</div></div>
   <div class="stat"><div class="num" id="s-guests">0</div><div class="label">Guests</div></div>
 </div>
 
@@ -258,9 +250,9 @@
       <div class="scatter-axis-x">Times Recommended</div>
       <div class="scatter-axis-y">Goodreads Rating</div>
       <div class="scatter-legend">
-        <div class="scatter-legend-item"><div class="scatter-legend-dot" style="background:#34d399;"></div> Nonfiction</div>
-        <div class="scatter-legend-item"><div class="scatter-legend-dot" style="background:#c084fc;"></div> Fiction</div>
-        <div class="scatter-legend-item"><div class="scatter-legend-dot" style="background:#fbbf24;"></div> Poetry</div>
+        <div class="scatter-legend-item"><div class="scatter-legend-dot" style="background:#5a7a5a;"></div> Nonfiction</div>
+        <div class="scatter-legend-item"><div class="scatter-legend-dot" style="background:#b56b4a;"></div> Fiction</div>
+        <div class="scatter-legend-item"><div class="scatter-legend-dot" style="background:#9a8445;"></div> Poetry</div>
       </div>
       <div class="scatter-tooltip" id="scatter-tooltip"></div>
     </div>
@@ -307,7 +299,7 @@
 <div class="footer">Data: Jan 2021 – Feb 2026 | Sources: <a href="https://www.ezrasbookshelf.com/">ezrasbookshelf.com</a>, <a href="https://www.ezrakleinbooks.com/">ezrakleinbooks.com</a>, <a href="https://www.goodreads.com/">Goodreads</a></div>
 
 <script>
-const COLORS = { fiction: '#c084fc', nonfiction: '#34d399', poetry: '#fbbf24', other: '#888' };
+const COLORS = { fiction: '#b56b4a', nonfiction: '#5a7a5a', poetry: '#9a8445', other: '#888' };
 
 fetch('books_complete.json').then(r => r.json()).then(data => {
   const episodes = data.episodes;
@@ -342,7 +334,7 @@ fetch('books_complete.json').then(r => r.json()).then(data => {
     svg.innerHTML += `<circle cx="21" cy="21" r="15.9" fill="none" stroke="${g.color}" stroke-width="4" stroke-dasharray="${dashArray}" stroke-dashoffset="${-offset}" transform="rotate(-90 21 21)"/>`;
     offset += pct;
   });
-  svg.innerHTML += `<text x="21" y="20" text-anchor="middle" fill="#ccc" font-size="4" font-weight="700">${total}</text><text x="21" y="24" text-anchor="middle" fill="#666" font-size="2.2">books</text>`;
+  svg.innerHTML += `<text x="21" y="20" text-anchor="middle" fill="#1a1a1a" font-size="4" font-weight="700">${total}</text><text x="21" y="24" text-anchor="middle" fill="#888" font-size="2.2">books</text>`;
 
   const legendEl = document.getElementById('donut-legend');
   genres.forEach(g => {
@@ -367,7 +359,7 @@ fetch('books_complete.json').then(r => r.json()).then(data => {
       const rHtml = b.rating ? `<span class="gr-badge">★ ${b.rating}</span>` : '';
       el.innerHTML += `<div class="bar-row" onclick="this.classList.toggle('expanded')"><div class="bar-label">${esc(b.title)}<span class="author">${esc(b.author)}</span></div><div class="bar-container"><div class="bar ${genre}-bar" style="width:${Math.max(pct,8)}%"><span class="count">${b.count}</span></div>${rHtml}</div></div><div class="bar-recommenders">By: ${esc(b.recommended_by.join(', '))}</div>`;
     });
-    if (books.length === 0) el.innerHTML = '<p style="color:#444;">No books with 2+ recommendations in this genre.</p>';
+    if (books.length === 0) el.innerHTML = '<p style="color:#aaa;">No books with 2+ recommendations in this genre.</p>';
   }
   renderGenreBars('top-fiction', 'fiction', 20);
   renderGenreBars('top-nonfiction', 'nonfiction', 20);
@@ -400,7 +392,7 @@ fetch('books_complete.json').then(r => r.json()).then(data => {
       const genre = b.genre || 'nonfiction';
       el.innerHTML += `<div class="bar-row" onclick="this.classList.toggle('expanded')"><div class="bar-label">${esc(b.title)}<span class="author">${esc(b.author)}</span></div><div class="bar-container"><div class="bar ${genre}-bar" style="width:${Math.max(pct,8)}%"><span class="count">${b.count}</span></div>${rHtml}<span class="genre-badge ${genre}">${genre}</span></div></div><div class="bar-recommenders">By: ${esc(b.recommended_by.join(', '))}</div>`;
     });
-    if (books.length === 0) el.innerHTML = '<p style="color:#444;">No multi-recommended books in this genre.</p>';
+    if (books.length === 0) el.innerHTML = '<p style="color:#aaa;">No multi-recommended books in this genre.</p>';
   }
 
   createGenrePills('chart-genre-pills', g => renderChart(g));
@@ -461,7 +453,7 @@ fetch('books_complete.json').then(r => r.json()).then(data => {
       const sz = Math.max(6, Math.min(16, 4 + b.count * 3));
       dot.style.cssText = `left:${x-sz/2}px;top:${y-sz/2}px;width:${sz}px;height:${sz}px;`;
       dot.addEventListener('mouseenter', e => {
-        tooltip.innerHTML = `<strong>${esc(b.title)}</strong><br><span style="color:#888;">${esc(b.author)}</span><br><span style="color:${COLORS[genre]};">${genre}</span> · <span style="color:#d4a843;">★ ${b.rating}</span> (${fmtNum(b.num_ratings)})<br><span style="color:#6c9bff;">${b.count}x: ${esc(b.recommended_by.join(', '))}</span>`;
+        tooltip.innerHTML = `<strong>${esc(b.title)}</strong><br><span style="color:#888;">${esc(b.author)}</span><br><span style="color:${COLORS[genre]};">${genre}</span> · <span style="color:#9a8445;">★ ${b.rating}</span> (${fmtNum(b.num_ratings)})<br><span style="color:#2c3e6b;">${b.count}x: ${esc(b.recommended_by.join(', '))}</span>`;
         tooltip.style.display = 'block';
         const tx = e.clientX - el.getBoundingClientRect().left + 15;
         const ty = e.clientY - el.getBoundingClientRect().top - 10;
@@ -491,7 +483,7 @@ fetch('books_complete.json').then(r => r.json()).then(data => {
         return `<li><span class="book-num">${i+1}.</span><span class="book-title-text">${esc(b.title)}</span> <span class="book-author-text">— ${esc(b.author)}</span> <span class="genre-badge ${genre}">${genre}</span> ${rHtml}</li>`;
       }).join('')}</ol></div>`;
     });
-    el.innerHTML = html || '<p style="color:#555;">No episodes match.</p>';
+    el.innerHTML = html || '<p style="color:#aaa;">No episodes match.</p>';
     document.getElementById('ep-load-more').style.display = toShow.length < filtered.length ? 'block' : 'none';
   }
   renderEpisodes();
@@ -526,10 +518,10 @@ fetch('books_complete.json').then(r => r.json()).then(data => {
     toShow.forEach(b => {
       const bc = b.count >= 3 ? 'rec-badge hot' : 'rec-badge';
       const genre = b.genre || 'nonfiction';
-      const rHtml = b.rating ? `<span class="rating-num">${b.rating}</span> ★<span class="rating-count">${fmtNum(b.num_ratings)}</span>` : '<span style="color:#333;">—</span>';
+      const rHtml = b.rating ? `<span class="rating-num">${b.rating}</span> ★<span class="rating-count">${fmtNum(b.num_ratings)}</span>` : '<span style="color:#ccc;">—</span>';
       html += `<tr><td><strong>${esc(b.title)}</strong></td><td style="color:#888;">${esc(b.author)}</td><td><span class="genre-badge ${genre}">${genre}</span></td><td style="color:#888;font-size:0.78rem;">${esc(b.recommended_by.join(', '))}</td><td><span class="${bc}">${b.count}</span></td><td>${rHtml}</td></tr>`;
     });
-    el.innerHTML = html || '<tr><td colspan="6" style="color:#555;">No books match.</td></tr>';
+    el.innerHTML = html || '<tr><td colspan="6" style="color:#aaa;">No books match.</td></tr>';
     document.getElementById('book-load-more').style.display = toShow.length < filtered.length ? 'block' : 'none';
   }
 
@@ -561,7 +553,7 @@ fetch('books_complete.json').then(r => r.json()).then(data => {
       }));
       html += `<div class="guest-card"><div class="guest-name">${esc(g.name)}</div><div class="guest-ep">${g.episodes.length} ep — ${g.episodes.map(ep => fmtDate(ep.date)).join(', ')}</div><div class="guest-books">${books.join(' · ')}</div></div>`;
     });
-    el.innerHTML = html || '<p style="color:#555;">No guests match.</p>';
+    el.innerHTML = html || '<p style="color:#aaa;">No guests match.</p>';
   }
   renderGuests();
   document.getElementById('guest-search').addEventListener('input', e => renderGuests(e.target.value));
